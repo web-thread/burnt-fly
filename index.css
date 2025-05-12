@@ -1,5 +1,5 @@
-::selection{background-color:#2A6CBA; color:#ffffff !important;}
-::-moz-selection{background-color:#2A6CBA; color:#ffffff !important;}
+::selection{background-color:#3F5EFB; color:#ffffff !important;}
+::-moz-selection{background-color:#3F5EFB; color:#ffffff !important;}
 
 *{
     margin: 0;
@@ -38,42 +38,100 @@ section{
 }
 a{
     color: #111;
-}
-a:hover,
-.more:hover{
-    color: #ddd;
-}
-a,
-.more,
-.more .material-symbols-outlined{
     transition: all 300ms ease-out;
 }
+a:hover{
+    color: #ddd;
+}
+
+.fly-logo-container {
+  position: relative; /* To position the speech balloon relative to it */
+  display: inline-block; /* Adjust as needed for your layout */
+}
+
+.fly-logo {
+  animation: flyAnimation 5s infinite alternate;
+  position: relative; /* Still needed for the fly animation */
+  cursor: pointer; /* Indicate it's clickable */
+}
+
+.speech-balloon {
+  position: absolute;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  bottom: 100%; /* Position above the image */
+  left: 50%;
+  transform: translateX(-50%); /* Center above and add a small gap */
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth appearance */
+}
+
+.speech-balloon::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.speech-balloon::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -12px;
+  border-width: 12px;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}
+
+.fly-logo-container.clicked .speech-balloon {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes flyAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5px, -5px);
+  }
+  50% {
+    transform: translate(10px, 10px);
+  }
+  75% {
+    transform: translate(-5px, 5px);
+  }
+  100% {
+    transform: translate(-10px, -10px);
+  }
+}
+
 h1{
-    text-align: center;
     font-size: 1.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
+    margin-bottom: 10px;
+}
+.container > h1,
+.container > p{
     color: #fff;
 }
-h1 span{
-    display: inline-block;
-    line-height: 1;
+.container > p{
+    font-size: 0.9rem;
 }
-@keyframes colorchange {
-    0%   { color: #94bbe9; }   
-    33%  { color: #B892E8; }   
-    66%  { color: #E196EA; }   
-    100% { color: #EB99CF; }
-}
-  
-h1 .material-symbols-outlined {
-  animation: colorchange 9s infinite alternate-reverse;
-}
+
 h2{
     margin-bottom: 20px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 .txt{
     font-size: 1.3rem;
@@ -102,7 +160,7 @@ form button{
     gap: 10px;
 }
 form button{
-    background-color: #2E78CF;
+    background-color: #2A6CBA;
     color: #fff;
     border: none; 
     padding: 10px 20px; 
@@ -113,7 +171,7 @@ form button{
 }
 
 form button:hover {
-    background-color: #2A6CBA;
+    background-color: #3F5EFB;
 }
 form button:active {
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3); 

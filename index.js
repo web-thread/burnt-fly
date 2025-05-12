@@ -1,5 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+const flyLogoContainer = document.querySelector('.fly-logo-container');
+
+const temporaryClass = 'clicked'; // The CSS class you want to add
+const duration = 3500; // Duration in milliseconds
+let timeoutId; // Variable to store the timeout ID
+
+flyLogoContainer.addEventListener('click', () => {
+  // Clear any existing timeout to handle multiple quick clicks
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+  }
+
+  // Add the class
+  flyLogoContainer.classList.add(temporaryClass);
+
+  // Set a timeout to remove the class after the specified duration
+  timeoutId = setTimeout(() => {
+    flyLogoContainer.classList.remove(temporaryClass);
+    timeoutId = null; // Reset the timeout ID
+  }, duration);
+});
+
 const headers = {
     //'Authorization': 'Bearer your_api_token_here', // Example authorization header
     'Content-Type': 'application/json'        // Example content type header
@@ -206,7 +228,7 @@ animeChanApiForm.addEventListener('submit', function(e) {
 })
 getAnimeChanApi();
 
-*/
+
 
 // https://stoic.tekloon.net/stoic-quote
 
@@ -312,5 +334,5 @@ numbersApiForm.addEventListener('submit', function(e) {
     getNumbersApi();
 })
 getNumbersApi();
-
+*/
 });
