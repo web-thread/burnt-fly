@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <title>Burnt Fly | Web Thread</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Burnt Fly App. A collection of free API " />
+        <meta name="author" content="Web Thread">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <main>    
+            <div class="container">
+                <img src="burnt_fly_web.png" alt="burnt fly logo" />
+                <h1>Burnt Fly</h1>
+                <section id="jokeapi">
+                    <div class="wrapper">
+                        <h2>Jokes</h2>
+                        <form id="jokeapi-form">
+                            <div class="select-wrap">
+                                <label for="jokeapi-category" aria-label="jokeapi category">Joke Category:</label>
+                                <select id="jokeapi-category">
+                                    <option value="Miscellaneous" selected>Miscellaneous</option>
+                                    <option value="Programming">Programming</option>
+                                    <option value="Dark">Dark</option>
+                                    <option value="Pun">Pun</option>
+                                    <option value="Spooky">Spooky</option>
+                                    <option value="Christmas">Christmas</option>
+                                </select>
+                            </div>
+                            <div class="txt" aria-live="polite"></div>
+                            <button type="submit" title="Generate Joke">NEXT JOKE</button>
+                        </form> 
+                    </div><!-- end wrapper -->
+                    <div class="info">
+                        <a href="https://sv443.net/jokeapi/v2/" target="_blank">By Joke API</a>
+                    </div>
+                </section><!-- end jokeapi-->
+                
+                <section id="geekjokesapi">
+                    <div class="wrapper">
+                        <h2>Geek Jokes</h2>
+                        <form id="geekjokesapi-form">
+                            <div class="txt" aria-live="polite"></div>
+                            <button type="submit" title="Generate Geek Joke">NEXT JOKE</button>
+                        </form>
+                    </div><!-- end wrapper -->
+                    <div class="info">
+                        <a href="https://github.com/sameerkumar18/geek-joke-api" target="_blank">By Geek Jokes API</a>
+                    </div>
+                </section><!-- end geekjokesapi -->
+
+                <section id="uselessfactsapi">
+                    <div class="wrapper">
+                        <h2>Useless Fact</h2>
+                        <form id="uselessfactsapi-form">
+                            <div class="txt" aria-live="polite"></div>
+                            <button type="submit" title="Generate Useless Fact">NEXT USELESS FACT</button>
+                        </form>
+                    </div><!-- end wrapper -->
+                    <div class="info">
+                        <a href="https://uselessfacts.jsph.pl/" target="_blank">By Useless Facts API</a>
+                    </div>
+                </section><!-- end uselessfactsapi -->
+
+                <section id="kanyerestapi">
+                    <div class="wrapper">
+                        <h2>Keyne Quotes</h2>
+                        <form id="kanyerestapi-form">
+                            <div class="txt" aria-live="polite"></div>
+                            <button type="submit" title="Generate Keyne Quote">NEXT KEYNE QUOTE</button>
+                        </form>
+                    </div><!-- end wrapper -->
+                    <div class="info">
+                        <a href="https://kanyerest.jsph.pl/" target="_blank">By Kanye Rest API</a>
+                    </div>
+                </section><!-- end kanyerestapi -->
+
+                <section id="animechanapi">
+                    <div class="wrapper">
+                        <h2>Anime Quotes</h2>
+                        <form id="animechanapi-form">
+                            <div class="txt" aria-live="polite"></div>
+                            <button type="submit" title="Generate Anime Quote">NEXT ANIME QUOTE</button>
+                        </form>
+                    </div><!-- end wrapper -->
+                    <div class="info">
+                        <a href="https://animechan.io/" target="_blank">By Anime Chan API</a>
+                    </div>
+                </section><!-- end animechanapi -->
+
+                <section id="numbersapi">
+                    <div class="wrapper">
+                        <h2>Number Tales</h2>
+                        <form id="numbersapi-form">
+                            <div class="select-wrap">
+                                <label for="numberapi-type" aria-label="number type">Number Type:</label>
+                                <select id="numberapi-type">
+                                    <option value="trivia" selected>Trivia</option>
+                                    <option value="year">Year</option>
+                                    <option value="math">Math</option>
+                                    <option value="date">Date</option>
+                                </select>
+                            </div>
+                            <div id="input-number-wrap">
+                                <label for="numberapi-num">Enter number:</label>
+                                <input id="numberapi-num" type="number" value="5" min="0" max="1000">
+                            </div>
+                            <div id="input-date-wrap">
+                                <label for="monthDay">Enter date (month/day):</label>
+                                <input type="text" id="monthDay" name="monthDay" placeholder="mm/dd" value="05/25">
+                                <p id="validationError"></p>
+                            </div>
+                            <div class="txt" aria-live="polite"></div>
+                            <button id="numbersapi-btn" type="submit" title="Generate Number Tale">NEXT NUMBER TALE</button>
+                        </form>
+                    </div><!-- end wrapper -->
+                    <div class="info">
+                        <a href="http://numbersapi.com/" target="_blank">By Numbers API</a>
+                    </div>
+                </section><!-- end numbersapi -->
+                
+            </div> <!-- end container -->
+        </main>
+        <footer>
+            <p>App developed by <a href="https://web-thread.com/" target="_blank">Web Thread</a></p>
+            <p>Powered by:<br> 
+                <a href="https://sv443.net/jokeapi/v2/" target="_blank">Joke API</a>,
+                <a href="https://github.com/sameerkumar18/geek-joke-api" target="_blank">Geek Jokes API</a>,
+                <a href="https://uselessfacts.jsph.pl/" target="_blank">Useless Facts API</a>,
+                <a href="https://kanyerest.jsph.pl/" target="_blank">Kanye Rest API</a>,
+                <a href="https://animechan.io/" target="_blank">Anime Chan API</a>,
+                <a href="http://numbersapi.com/" target="_blank">Numbers API</a>
+            </p>
+        </footer>
+        <script src="index.js"></script>
+    </body>
+</html>
