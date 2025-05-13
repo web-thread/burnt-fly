@@ -152,8 +152,11 @@ const headers = {
 const jokeApiForm = document.getElementById("jokeapi-form")
 const jokeApiCategoryElem = document.getElementById("jokeapi-category")
 const jokeApiTxtElem = document.querySelector("#jokeapi .txt") 
+const jokeApiApiBtn = document.getElementById("jokeapi-btn")
 
 async function getjokeApi() {
+
+    jokeApiApiBtn.disabled = true;
 
     let jokeApiCategory = jokeApiCategoryElem.value;
 
@@ -181,6 +184,10 @@ async function getjokeApi() {
         console.error("Error while fetching:", error);
         document.getElementById("jokeapi").remove();
         document.querySelector('a[href="#jokeapi"]').parentElement.remove();
+    } finally {
+      // Re-enable the button in the 'finally' block to ensure it runs
+      // even if the fetch fails.
+      jokeApiApiBtn.disabled = false;
     }
 }
 
@@ -195,8 +202,11 @@ getjokeApi();
 
 const geekJokesApiForm = document.getElementById("geekjokesapi-form")
 const geekJokesApiTxtElem = document.querySelector("#geekjokesapi .txt") 
+const geekJokesApiBtn = document.getElementById("geekjokesapi-btn")
 
 async function getGeekJokesApi() {
+
+    geekJokesApiBtn.disabled = true;
 
     const apiUrl = `https://geek-jokes.sameerkumar.website/api?format=json`;
 
@@ -219,6 +229,10 @@ async function getGeekJokesApi() {
         console.error("Error while fetching:", error);
         document.getElementById("geekjokesapi").remove();
         document.querySelector('a[href="#geekjokesapi"]').parentElement.remove();
+    } finally {
+      // Re-enable the button in the 'finally' block to ensure it runs
+      // even if the fetch fails.
+      geekJokesApiBtn.disabled = false;
     }
 }
 
@@ -235,9 +249,11 @@ getGeekJokesApi();
 
 const uselessFactsApiForm = document.getElementById("uselessfactsapi-form")
 const uselessFactsApiTxtElem = document.querySelector("#uselessfactsapi .txt") 
+const uselessFactsApiBtn = document.getElementById("uselessfactsapi-btn")
 
 async function getUselessFactsApi() {
 
+    uselessFactsApiBtn.disabled = true;
     const apiUrl = `https://uselessfacts.jsph.pl/api/v2/facts/random`;
 
     try {
@@ -254,11 +270,14 @@ async function getUselessFactsApi() {
 
         uselessFactsApiTxtElem.innerHTML = `<p>${data.text}</p>`
 
-
     } catch (error) {
         console.error("Error while fetching:", error);
         document.getElementById("uselessfactsapi").remove();
         document.querySelector('a[href="#uselessfactsapi"]').parentElement.remove();
+    } finally {
+      // Re-enable the button in the 'finally' block to ensure it runs
+      // even if the fetch fails.
+      uselessFactsApiBtn.disabled = false;
     }
 }
 
@@ -274,8 +293,11 @@ getUselessFactsApi();
 
 const kanyeRestApiForm = document.getElementById("kanyerestapi-form")
 const kanyeRestApiTxtElem = document.querySelector("#kanyerestapi .txt") 
+const kanyeRestApiBtn = document.getElementById("kanyerestapi-btn")
 
 async function getKanyeRestApi() {
+
+    kanyeRestApiBtn.disabled = true;
 
     const apiUrl = `https://api.kanye.rest`;
 
@@ -294,11 +316,14 @@ async function getKanyeRestApi() {
     
       kanyeRestApiTxtElem.innerHTML = `<p>${data.quote}</p>`
 
-
     } catch (error) {
       console.error("Error while fetching:", error);
       document.getElementById("kanyerestapi").remove();
       document.querySelector('a[href="#kanyerestapi"]').parentElement.remove();
+    } finally {
+      // Re-enable the button in the 'finally' block to ensure it runs
+      // even if the fetch fails.
+      kanyeRestApiBtn.disabled = false;
     }
 }
 
@@ -313,8 +338,11 @@ getKanyeRestApi();
 
 const animeChanApiForm = document.getElementById("animechanapi-form")
 const animeChanApiTxtElem = document.querySelector("#animechanapi .txt") 
+const animeChanApiBtn = document.getElementById("animechanapi-btn")
 
 async function getAnimeChanApi() {
+
+    animeChanApiBtn.disabled = true;
 
     const apiUrl = `https://api.animechan.io/v1/quotes/random`;
 
@@ -341,6 +369,10 @@ async function getAnimeChanApi() {
         console.error("Error while fetching:", error);
         document.getElementById("animechanapi").remove();
         document.querySelector('a[href="#animechanapi"]').parentElement.remove();
+    } finally {
+      // Re-enable the button in the 'finally' block to ensure it runs
+      // even if the fetch fails.
+      animeChanApiBtn.disabled = false;
     }
 }
 
@@ -356,8 +388,9 @@ getAnimeChanApi();
 
 const numbersApiForm = document.getElementById("numbersapi-form")
 const numbersApiTxtElem = document.querySelector("#numbersapi .txt") 
-const numbersApiTypeElem = document.getElementById("numberapi-type")
-const numbersApiNumElem = document.getElementById("numberapi-num")
+const numbersApiTypeElem = document.getElementById("numbersapi-type")
+const numbersApiNumElem = document.getElementById("numbersapi-num")
+const numbersApiBtn = document.getElementById("numbersapi-btn")
 
 let formattedDate = "";
 
@@ -409,6 +442,8 @@ numbersApiTypeElem.addEventListener('change', toggleInputFields);
 
 
 async function getNumbersApi() {
+    numbersApiBtn.disabled = true;
+
     let numbersApiType = numbersApiTypeElem.value;
     let numbersApiNum = numbersApiNumElem.value;
 
@@ -436,6 +471,10 @@ async function getNumbersApi() {
         console.error("Error while fetching:", error);
         document.getElementById("numbersapi").remove();
         document.querySelector('a[href="#numbersapi"]').parentElement.remove();
+    } finally {
+      // Re-enable the button in the 'finally' block to ensure it runs
+      // even if the fetch fails.
+      numbersApiBtn.disabled = false;
     }
 }
 
