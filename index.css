@@ -9,7 +9,7 @@
 body{
     background: #3F5EFB;
     background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    padding: 0 10px 50px;
+    padding: 0 10px 100px;
     font-family: "Manrope", sans-serif;
     line-height: 1.6;
     text-align: center;
@@ -27,7 +27,7 @@ a:hover{
 }
 .navicon,
 .totop{
-  z-index: 90;
+  z-index: 10;
   transition: all 300ms linear;
   width: 60px;
   height: 50px;
@@ -83,7 +83,7 @@ a:hover{
   height: 50%;
   transform: rotate(45deg);
   transform-origin: center center;
-  background-color: #fff;
+  background-color: #000;
 }
 .opennav .navicon::after{
   transform: rotate(-45deg);
@@ -97,7 +97,17 @@ a:hover{
 .opennav .navwrap{
   right: 0;
 }
-
+.opennav .navicon{
+    opacity: 0.6;
+}
+.opennav .navicon:hover{
+    opacity: 1;
+}
+header{
+    padding-top: 50px;
+    position: relative;
+    z-index: 10;
+}
 header nav{
     position: fixed;
     top: 0;
@@ -141,7 +151,7 @@ header nav a{
   background-position: 0 center;
   margin: 0 5px;
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 .social-links a:hover{
   opacity: 1;
@@ -165,10 +175,33 @@ header nav a{
   background-position: right center;
 }
 
+#audio-button{
+position: absolute;
+  top: 5px;
+  left: -5px;
+  z-index: 10; /* Ensure it's above other content */
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  background-image: url(audio.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  width: 40px;
+  height: 40px;
+  opacity: 0.8;
+  transition: opacity 300ms ease-out
+}
+#audio-button:hover{
+  opacity: 1;
+}
+#audio-button.stopped{
+    background-position: right center;
+}
 
 main{
     position: relative;
-    padding-top: 50px;
     padding-bottom: 100px;
 }
 .container{
@@ -188,11 +221,11 @@ section{
 
 .fly-logo-container {
   display: inline-block; /* Adjust as needed for your layout */
+  cursor: pointer;
 }
 .fly-logo {
   animation: flyAnimation 5s infinite alternate;
   position: relative; /* Still needed for the fly animation */
-  cursor: pointer; /* Indicate it's clickable */
 }
 .speech-balloon {
   line-height: 1.2;
@@ -209,6 +242,7 @@ section{
   opacity: 0; /* Initially hidden */
   visibility: hidden; /* Initially hidden */
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth appearance */
+  z-index: 30;
 }
 .speech-balloon::after {
   content: '';
@@ -263,6 +297,7 @@ h1{
 }
 .container > p{
     font-size: 0.9rem;
+    color: #ddd;
 }
 
 h2{
@@ -392,6 +427,11 @@ footer > p:not(:last-child){
     .navicon, .totop{
         width: 50px;
         height: 40px;
+    }
+    header nav{
+        width: 100%;
+        height: 100vh;
+        overflow: auto;
     }
     .wrapper{
         padding: 30px 10px;

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 80 40"
+   aria-labelledby="title"
+   aria-describedby="desc"
+   role="img"
+   version="1.1"
+   id="svg2"
+   width="80"
+   height="40"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <title
+     id="title1">Mute</title>
+  <desc
+     id="desc1">A line styled icon from Orion Icon Library.</desc>
+  <path
+     data-name="layer2"
+     fill="none"
+     stroke="#202020"
+     stroke-miterlimit="10"
+     stroke-width="1.16129"
+     d="m 18.490322,27.780645 7.316129,7.316129 V 20 m 0,-5.806452 V 4.9032257 L 15.354838,15.354839 H 8.3870961 a 1.1612903,1.1612903 0 0 0 -1.1612903,1.16129 v 6.967742 a 1.1612903,1.1612903 0 0 0 1.1612903,1.16129 h 6.9677419"
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     id="path1"
+     style="stroke:#ffffff;stroke-width:2.32258;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     data-name="layer1"
+     fill="none"
+     stroke="#202020"
+     stroke-miterlimit="10"
+     stroke-width="1.16129"
+     d="M 37.419354,2.580645 2.5806445,37.419355"
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     id="path2"
+     style="stroke:#ffffff;stroke-width:2.32258;stroke-dasharray:none;stroke-opacity:1" />
+  <metadata
+     id="metadata2">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Mute</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title
+     id="title1-5">Low Volume</title>
+  <desc
+     id="desc1-3">A line styled icon from Orion Icon Library.</desc>
+  <path
+     data-name="layer2"
+     d="m 69.573658,13.9847 a 7.0768231,7.0768231 0 0 1 0,12.089572"
+     fill="none"
+     stroke="#202020"
+     stroke-miterlimit="10"
+     stroke-width="1.17947"
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     id="path1-5"
+     style="stroke:#ffffff;stroke-width:2.35894;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     data-name="layer1"
+     d="M 65.9173,4.6668826 55.302065,15.282117 h -7.076823 a 1.1794705,1.1794705 0 0 0 -1.179471,1.179471 v 7.076822 a 1.1794705,1.1794705 0 0 0 1.179471,1.179472 h 7.076823 L 65.9173,35.333116 Z"
+     fill="none"
+     stroke="#202020"
+     stroke-miterlimit="10"
+     stroke-width="1.17947"
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     id="path2-6"
+     style="stroke:#ffffff;stroke-width:2.35894;stroke-dasharray:none;stroke-opacity:1" />
+  <rect
+     style="display:none;fill:none;stroke:#000000;stroke-width:1.27209;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+     id="rect3"
+     width="38.727909"
+     height="38.727909"
+     x="0.6360448"
+     y="0.63604546" />
+  <rect
+     style="display:none;fill:none;stroke:#000000;stroke-width:1.27209;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+     id="rect2"
+     width="38.727909"
+     height="38.727909"
+     x="40.636047"
+     y="0.63604498" />
+</svg>

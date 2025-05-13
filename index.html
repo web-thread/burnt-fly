@@ -1,9 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Burnt Fly | Web Thread</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Burnt Fly App. A collection of free API " />
+        <meta name="description" content="Burnt Fly App. A collection of free API for fun." />
         <meta name="author" content="Web Thread">
         <link rel="shortcut icon" href="favicon.ico">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +13,15 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <audio id="buzzingSound" src="fly-buzz.mp3" loop></audio>
         <header>
+            <button id="audio-button" aria-label="play audio"></button>
+            <div class="fly-logo-container">
+                  <img class="fly-logo" src="burnt_fly_web.png" width="120" height="139" alt="burnt fly logo" />
+                  <div class="speech-balloon" aria-live="polite">
+                    I wasn't burned by the electric fly swatter, but I burn my mind here...
+                  </div>
+                </div>
             <button class="navicon" aria-label="menu"><span>&nbsp;</span></button>
             <nav>
                 <ul class="menu">
@@ -31,13 +40,8 @@
         </header>
         <main>    
             <div class="container">
-                <div class="fly-logo-container">
-                  <img class="fly-logo" src="burnt_fly_web.png" width="120" height="139" alt="burnt fly logo" />
-                  <div class="speech-balloon" aria-live="polite">
-                    I wasn't burned by the electric fly swatter, but I burn my mind here...
-                  </div>
-                </div>
                 <h1>Burnt Fly</h1>
+                <p>Joker, a Useless Fact, Keyne, Saitama, and Number Tales are going to a bar...</p>
                 <p>A collection of free API's</p>
                 <section id="jokeapi">
                     <div class="wrapper">
@@ -133,9 +137,8 @@
                                 <input id="numberapi-num" type="number" value="5" min="0" max="1000">
                             </div>
                             <div id="input-date-wrap">
-                                <label for="monthDay">Enter date (month/day):</label>
-                                <input type="text" id="monthDay" name="monthDay" placeholder="mm/dd" value="05/25">
-                                <p id="validationError"></p>
+                                <label for="myDate">Enter date:</label>
+                                <input type="date" id="myDate">
                             </div>
                             <div class="txt" aria-live="polite"></div>
                             <button id="numbersapi-btn" type="submit" title="Generate Number Tale">NEXT NUMBER TALE</button>
@@ -158,6 +161,7 @@
                 <a href="https://animechan.io/" target="_blank">Anime Chan API</a>,
                 <a href="http://numbersapi.com/" target="_blank">Numbers API</a>
             </p>
+            <p>Sound Effect by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=62408">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=62408">Pixabay</a></p>
         </footer>
         <button class="totop" aria-label="to top"></button>
         <script src="index.js"></script>

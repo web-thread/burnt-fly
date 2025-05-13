@@ -2,19 +2,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const navicon = document.querySelector(".navicon");
 const header = document.querySelector("header");
-
-navicon.addEventListener("click", function() {
-  header.classList.toggle("opennav");
-});
-
 const flyLogoContainer = document.querySelector('.fly-logo-container');
-
 const temporaryClass = 'clicked'; // The CSS class you want to add
 const duration = 4000; // Duration in milliseconds
 let timeoutId; // Variable to store the timeout ID
 const speechBalloon = document.querySelector('.speech-balloon');
 
+navicon.addEventListener("click", function() {
+  header.classList.toggle("opennav");
 
+});
+
+const menuLinks = document.querySelectorAll('.menu a');
+const scrollOffset = 50; // The distance to scroll before the target element
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      const targetPosition = targetElement.offsetTop - scrollOffset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});;
+
+
+// fly's quotes
 const flyQuotes = ["I wasn't burned by the electric bulb, but I got burned here...", 
   "Ok, before I read Keynes's quotes I felt a little bit depressed. Now I feel ok...",
   "How many useless facts do I have to learn to totally burn my mind?",
@@ -25,44 +43,99 @@ const flyQuotes = ["I wasn't burned by the electric bulb, but I got burned here.
 ];
 
 let flyQuoteNum = 0;
+let startQuotes = false;
 
-flyLogoContainer.addEventListener('click', () => {
+function setFlyQuote() {
+  if(startQuotes){
+    speechBalloon.innerHTML = `<p>${flyQuotes[flyQuoteNum]}</p>`;
 
-  speechBalloon.innerHTML = `<p>${flyQuotes[flyQuoteNum]}</p>`;
+    // Clear any existing timeout to handle multiple quick clicks
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
 
+    // Add the class
+    flyLogoContainer.classList.add(temporaryClass);
 
-  // Clear any existing timeout to handle multiple quick clicks
-  if (timeoutId) {
-    clearTimeout(timeoutId);
+    // Set a timeout to remove the class after the specified duration
+    timeoutId = setTimeout(() => {
+      flyLogoContainer.classList.remove(temporaryClass);
+      timeoutId = null; // Reset the timeout ID
+    }, duration);
+
+    flyQuoteNum++;
+
+    if(flyQuoteNum >= flyQuotes.length){
+      flyQuoteNum = 0;
+    } 
   }
+  
+}
 
-  // Add the class
-  flyLogoContainer.classList.add(temporaryClass);
+setTimeout(()=>{
+  startQuotes = true;
+  setFlyQuote();
+}, 1000);
 
-  // Set a timeout to remove the class after the specified duration
-  timeoutId = setTimeout(() => {
-    flyLogoContainer.classList.remove(temporaryClass);
-    timeoutId = null; // Reset the timeout ID
-  }, duration);
+flyLogoContainer.addEventListener('click', setFlyQuote);
+// end fly's quotes
 
-  flyQuoteNum++;
 
-  if(flyQuoteNum >= flyQuotes.length){
-    flyQuoteNum = 0;
-  } 
+// fly buzz audio
+const audioButton = document.getElementById('audio-button');
+    const buzzingSound = document.getElementById('buzzingSound');
+    let audioPlaying = false;
 
-});
+    function playAudio() {
+      buzzingSound.play()
+        .then(() => {
+          audioPlaying = true;
+          audioButton.ariaLabel = 'Stop Audio';
+          audioButton.classList.remove('stopped');
+        })
+        .catch(error => {
+          console.error("Error playing audio:", error);
+          audioButton.ariaLabel = 'Play Failed';
+          audioButton.classList.add('stopped');
+        });
+    }
+
+    function stopAudio() {
+      buzzingSound.pause();
+      buzzingSound.currentTime = 0;
+      audioPlaying = false;
+      audioButton.ariaLabel = 'Play Audio';
+      audioButton.classList.add('stopped');
+    }
+
+    audioButton.addEventListener('click', function() {
+      if (audioPlaying) {
+        stopAudio();
+      } else {
+        playAudio();
+      }
+    });
+
+    // Initially set the button to the stopped state
+    stopAudio();
+
+// end fly buzz audio
+
 
 const body = document.querySelector('body');
 const totop = document.querySelector('.totop');
 
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
+  if (window.scrollY > 500) {
     body.classList.add('scrolled');
+    stopAudio();
   } else {
     body.classList.remove('scrolled');
+    audioButton.ariaLabel = 'Play Audio';
+    audioButton.classList.add('stopped');
   }
+  header.classList.remove('opennav');
 });
 
 totop.addEventListener('click', () => {
@@ -73,8 +146,6 @@ const headers = {
     //'Authorization': 'Bearer your_api_token_here', // Example authorization header
     'Content-Type': 'application/json'        // Example content type header
 };
-
-/*
 
 // https://sv443.net/jokeapi/v2/ 
 
@@ -95,7 +166,7 @@ async function getjokeApi() {
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`${response.status} - ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -107,8 +178,9 @@ async function getjokeApi() {
         }
 
     } catch (error) {
-        console.error("Error fetching or processing user data:", error);
+        console.error("Error while fetching:", error);
         document.getElementById("jokeapi").remove();
+        document.querySelector('a[href="#jokeapi"]').parentElement.remove();
     }
 }
 
@@ -135,7 +207,7 @@ async function getGeekJokesApi() {
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`${response.status} - ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -144,8 +216,9 @@ async function getGeekJokesApi() {
 
 
     } catch (error) {
-        console.error("Error fetching or processing user data:", error);
+        console.error("Error while fetching:", error);
         document.getElementById("geekjokesapi").remove();
+        document.querySelector('a[href="#geekjokesapi"]').parentElement.remove();
     }
 }
 
@@ -174,7 +247,7 @@ async function getUselessFactsApi() {
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`${response.status} - ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -183,8 +256,9 @@ async function getUselessFactsApi() {
 
 
     } catch (error) {
-        console.error("Error fetching or processing user data:", error);
+        console.error("Error while fetching:", error);
         document.getElementById("uselessfactsapi").remove();
+        document.querySelector('a[href="#uselessfactsapi"]').parentElement.remove();
     }
 }
 
@@ -206,25 +280,25 @@ async function getKanyeRestApi() {
     const apiUrl = `https://api.kanye.rest`;
 
     try {
-        const response = await fetch(apiUrl, {
-          method: 'GET', // Default is GET, but you can specify other methods like POST
-          headers: headers
-        });
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+      const response = await fetch(apiUrl, {
+        method: 'GET', // Default is GET, but you can specify other methods like POST
+        headers: headers
+      });
 
-        const data = await response.json();
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
 
-        console.log(data);
-
-       kanyeRestApiTxtElem.innerHTML = `<p>${data.quote}</p>`
+      const data = await response.json();
+    
+      kanyeRestApiTxtElem.innerHTML = `<p>${data.quote}</p>`
 
 
     } catch (error) {
-        console.error("Error fetching or processing user data:", error);
-        document.getElementById("kanyerestapi").remove();
+      console.error("Error while fetching:", error);
+      document.getElementById("kanyerestapi").remove();
+      document.querySelector('a[href="#kanyerestapi"]').parentElement.remove();
     }
 }
 
@@ -251,7 +325,7 @@ async function getAnimeChanApi() {
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`${response.status} - ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -264,8 +338,9 @@ async function getAnimeChanApi() {
         </div>
        `
     } catch (error) {
-        console.error("Error fetching or processing user data:", error);
+        console.error("Error while fetching:", error);
         document.getElementById("animechanapi").remove();
+        document.querySelector('a[href="#animechanapi"]').parentElement.remove();
     }
 }
 
@@ -283,40 +358,29 @@ const numbersApiForm = document.getElementById("numbersapi-form")
 const numbersApiTxtElem = document.querySelector("#numbersapi .txt") 
 const numbersApiTypeElem = document.getElementById("numberapi-type")
 const numbersApiNumElem = document.getElementById("numberapi-num")
-const numbersApiBtnElem = document.getElementById("numbersapi-btn")
 
-const monthDayInput = document.getElementById('monthDay');
-const validationError = document.getElementById('validationError');
+let formattedDate = "";
 
-monthDayInput.addEventListener('input', function() {
-  const inputValue = this.value;
-  const regex = /^(0?[1-9]|1[0-2])\/(0?[1-9]|[12][0-9]|3[01])$/;
-  if (!regex.test(inputValue)) {
-    validationError.textContent = 'Invalid format. Please use mm/dd.';
-    numbersApiBtnElem.disabled = true;
-    return;
-  }
-  const parts = inputValue.split('/');
-  const month = parseInt(parts[0]);
-  const day = parseInt(parts[1]);
-  if (month < 1 || month > 12 || day < 1 || day > 31) {
-    validationError.textContent = 'Invalid month or day.';
-    numbersApiBtnElem.disabled = true;
-    return;
-  }
-  // Basic leap year check for February (you might want a more robust check)
-  if (month === 2 && day > 29) {
-    validationError.textContent = 'Invalid day for February.';
-    numbersApiBtnElem.disabled = true;
-    return;
-  }
-  if ((month === 4 || month === 6 || month === 9 || month === 11) && day > 30) {
-    validationError.textContent = 'Invalid day for this month.';
-    numbersApiBtnElem.disabled = true;
-    return;
-  }
-  validationError.textContent = ''; // Clear error message if valid
-  numbersApiBtnElem.disabled = false;
+
+const dateInput = document.getElementById("myDate");
+
+// Function to get today's date in YYYY-MM-DD format
+function getTodayDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+// Set the default value of the date input to today's date
+dateInput.value = getTodayDate();
+
+dateInput.addEventListener("change", function() {
+  const selectedDate = new Date(this.value);
+  const month = (selectedDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = selectedDate.getDate().toString().padStart(2, '0');
+  formattedDate = `${month}/${day}`;
 });
 
 const numberInputWrap = document.getElementById('input-number-wrap');
@@ -351,28 +415,27 @@ async function getNumbersApi() {
     if(numberInputBoolean){
         numbersApi = parseInt(numbersApiNum);
     }else{
-        numbersApi = monthDayInput.value;
+        numbersApi = formattedDate;
     }
 
     const apiUrl = `http://numbersapi.com/${numbersApi}/${numbersApiType}?json`;
 
     try {
-        const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
 
-        const data = await response.json();
+      const data = await response.json();
 
-        console.log(data);
-
-       numbersApiTxtElem.innerHTML = `
-        <p>${data.text}</p>
-       `
+      numbersApiTxtElem.innerHTML = `
+       <p>${data.text}</p>
+      `
     } catch (error) {
-        console.error("Error fetching or processing user data:", error);
+        console.error("Error while fetching:", error);
         document.getElementById("numbersapi").remove();
+        document.querySelector('a[href="#numbersapi"]').parentElement.remove();
     }
 }
 
@@ -381,5 +444,6 @@ numbersApiForm.addEventListener('submit', function(e) {
     getNumbersApi();
 })
 getNumbersApi();
-*/
+
+
 });
