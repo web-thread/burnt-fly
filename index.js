@@ -1,12 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+const navicon = document.querySelector(".navicon");
+const header = document.querySelector("header");
+
+navicon.addEventListener("click", function() {
+  header.classList.toggle("opennav");
+});
+
 const flyLogoContainer = document.querySelector('.fly-logo-container');
 
 const temporaryClass = 'clicked'; // The CSS class you want to add
-const duration = 3500; // Duration in milliseconds
+const duration = 4000; // Duration in milliseconds
 let timeoutId; // Variable to store the timeout ID
+const speechBalloon = document.querySelector('.speech-balloon');
+
+
+const flyQuotes = ["I wasn't burned by the electric bulb, but I got burned here...", 
+  "Ok, before I read Keynes's quotes I felt a little bit depressed. Now I feel ok...",
+  "How many useless facts do I have to learn to totally burn my mind?",
+  "Chuck Norris doesn't swat flies. They surrender. Hi, hi, hi.",
+  "A fly's ambition... to taste the infinite ramen? Are you sure?",
+  "Hey sucker! I don't know the date I was born to know what happened that day...",
+  "Ok, Keynes's quotes are great..."
+];
+
+let flyQuoteNum = 0;
 
 flyLogoContainer.addEventListener('click', () => {
+
+  speechBalloon.innerHTML = `<p>${flyQuotes[flyQuoteNum]}</p>`;
+
+
   // Clear any existing timeout to handle multiple quick clicks
   if (timeoutId) {
     clearTimeout(timeoutId);
@@ -20,6 +44,29 @@ flyLogoContainer.addEventListener('click', () => {
     flyLogoContainer.classList.remove(temporaryClass);
     timeoutId = null; // Reset the timeout ID
   }, duration);
+
+  flyQuoteNum++;
+
+  if(flyQuoteNum >= flyQuotes.length){
+    flyQuoteNum = 0;
+  } 
+
+});
+
+const body = document.querySelector('body');
+const totop = document.querySelector('.totop');
+
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    body.classList.add('scrolled');
+  } else {
+    body.classList.remove('scrolled');
+  }
+});
+
+totop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 const headers = {

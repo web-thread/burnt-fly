@@ -12,11 +12,28 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <header>
+            <button class="navicon" aria-label="menu"><span>&nbsp;</span></button>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#jokeapi">Jokes</a></li>
+                    <li><a href="#geekjokesapi">Geek Jokes</a></li>
+                    <li><a href="#uselessfactsapi">Useless Facts</a></li>
+                    <li><a href="#kanyerestapi">Keyne Quotes</a></li>
+                    <li><a href="#animechanapi">Anime Quotes</a></li>
+                    <li><a href="#numbersapi">Number Tales</a></li>
+                </ul>
+                <ul class="social-links">
+                    <li><a href="https://www.instagram.com/web_thread_com/">Instagram</a></li>
+                    <li><a href="https://www.linkedin.com/company/web-thread/">LinkedIn</a></li>
+                </ul>
+            </nav>
+        </header>
         <main>    
             <div class="container">
                 <div class="fly-logo-container">
                   <img class="fly-logo" src="burnt_fly_web.png" width="120" height="139" alt="burnt fly logo" />
-                  <div class="speech-balloon">
+                  <div class="speech-balloon" aria-live="polite">
                     I wasn't burned by the electric fly swatter, but I burn my mind here...
                   </div>
                 </div>
@@ -133,7 +150,7 @@
         </main>
         <footer>
             <p>App developed by <a href="https://web-thread.com/" target="_blank">Web Thread</a></p>
-            <p>Powered by:<br> 
+            <p>Special thanks to:<br> 
                 <a href="https://sv443.net/jokeapi/v2/" target="_blank">Joke API</a>,
                 <a href="https://github.com/sameerkumar18/geek-joke-api" target="_blank">Geek Jokes API</a>,
                 <a href="https://uselessfacts.jsph.pl/" target="_blank">Useless Facts API</a>,
@@ -142,6 +159,7 @@
                 <a href="http://numbersapi.com/" target="_blank">Numbers API</a>
             </p>
         </footer>
+        <button class="totop" aria-label="to top"></button>
         <script src="index.js"></script>
     </body>
 </html>
