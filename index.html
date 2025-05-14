@@ -18,7 +18,6 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <audio id="buzzingSound" src="fly-buzz.mp3" loop></audio>
         <header>
             <button id="audio-button" aria-label="play audio"></button>
             <div class="fly-logo-container">
@@ -139,7 +138,7 @@
                             </div>
                             <div id="input-number-wrap">
                                 <label for="numbersapi-num">Enter number:</label>
-                                <input id="numbersapi-num" type="number" value="5" min="0" max="1000">
+                                <input id="numbersapi-num" type="number" value="5" min="0" max="9999">
                             </div>
                             <div id="input-date-wrap">
                                 <label for="myDate">Enter date:</label>
@@ -155,6 +154,7 @@
                 </section><!-- end numbersapi -->
                 
             </div> <!-- end container -->
+            <audio id="buzzingSound" src="fly-buzz.mp3" loop></audio>
         </main>
         <footer>
             <p>App developed by <a href="https://web-thread.com/" target="_blank">Web Thread</a><br>

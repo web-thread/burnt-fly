@@ -13,25 +13,6 @@ navicon.addEventListener("click", function() {
 
 });
 
-const menuLinks = document.querySelectorAll('.menu a');
-const scrollOffset = 50; // The distance to scroll before the target element
-
-menuLinks.forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
-    const targetId = this.getAttribute('href');
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      const targetPosition = targetElement.offsetTop - scrollOffset;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
-  });
-});;
-
-
 // fly's quotes
 const flyQuotes = ["I wasn't burned by the electric bulb, but I got burned here...", 
   "Ok, before I read Keynes's quotes I felt a little bit depressed. Now I feel ok...",
@@ -483,6 +464,25 @@ numbersApiForm.addEventListener('submit', function(e) {
     getNumbersApi();
 })
 getNumbersApi();
+
+
+const menuLinks = document.querySelectorAll('.menu a');
+const scrollOffset = 50; // The distance to scroll before the target element
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      const targetPosition = targetElement.offsetTop - scrollOffset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
 
 
 });

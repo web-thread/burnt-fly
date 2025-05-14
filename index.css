@@ -9,7 +9,6 @@
 body{
     background: #3F5EFB;
     background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    padding: 0 10px 100px;
     font-family: "Manrope", sans-serif;
     line-height: 1.6;
     text-align: center;
@@ -176,9 +175,9 @@ header nav a{
 }
 
 #audio-button{
-position: absolute;
+  position: absolute;
   top: 5px;
-  left: -5px;
+  left: 5px;
   z-index: 10; /* Ensure it's above other content */
   background-color: transparent;
   border: none;
@@ -201,8 +200,7 @@ position: absolute;
 }
 
 main{
-    position: relative;
-    padding-bottom: 100px;
+  padding: 0 10px 100px;
 }
 .container{
     max-width: 860px;
@@ -363,23 +361,24 @@ form button:active {
     width: 80px;
 }
 #validationError{
-    position: absolute;
-    color: #EB99CF;
-    font-size: 0.8rem;
-    bottom: 0;
-    transform: translate(-50%, 100%);
-    left: 50%;
-    width: 100%;
+  position: absolute;
+  color: #EB99CF;
+  font-size: 0.8rem;
+  bottom: 0;
+  transform: translate(-50%, 100%);
+  left: 50%;
+  width: 100%;
 }
 button:disabled{
-    opacity: 0.5;
-    cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 footer{
-    font-size: 0.8rem;
-    text-align: center;
-    position: relative;
-    z-index: 10;
+  font-size: 0.8rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  padding-bottom: 100px;
 }
 footer > p:not(:last-child){
     margin-bottom: 10px;
@@ -419,8 +418,8 @@ footer > p:not(:last-child){
 }
 @media screen and (max-width: 400px){
     .speech-balloon{
-        width: 100%;
-        left: 0;
+        width: 90%;
+        left: 5%;
         transform: none;
         font-size: 0.6rem;
     }
