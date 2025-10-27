@@ -1,6 +1,6 @@
 App developed by Web Thread, https://web-thread.com/
 
-Live at http://web-thread.com/apps/burnt-fly/ 
+Live at https://web-thread.com/apps/burnt-fly/ 
 
 Powered by:
 
