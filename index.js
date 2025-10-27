@@ -10,7 +10,6 @@ const speechBalloon = document.querySelector('.speech-balloon');
 
 navicon.addEventListener("click", function() {
   header.classList.toggle("opennav");
-
 });
 
 // fly's quotes
